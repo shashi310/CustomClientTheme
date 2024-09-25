@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+Client-Specific Theming App
+This React application demonstrates how to dynamically switch the theme based on the logged-in client using Tailwind CSS and local storage. Each client has its own unique primary and secondary color, which are applied globally to the app's styling.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Features
+Client-Specific Theming: Automatically applies a color theme based on the client selected in the dropdown.
+Dynamic Color Switching: The app updates the color scheme on the fly when the client is switched, using Tailwind CSS variables.
+User-Friendly Dropdown: The dropdown list allows users to select a client, with each option styled in the client's primary color.
+Technologies Used
+React.js
+Tailwind CSS
+Local Storage
+JavaScript
+Getting Started
+Prerequisites
+Before you begin, make sure you have the following installed:
 
-## Available Scripts
+Node.js (v14 or higher)
+npm
+Installation
+Clone the repository:
 
-In the project directory, you can run:
+bash
+Copy code
+git clone https://github.com/your-username/client-theming-app.git
+Navigate into the project directory:
 
-### `npm start`
+bash
+Copy code
+cd client-theming-app
+Install the dependencies:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+bash
+Copy code
+npm install
+Install Tailwind CSS:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+bash
+Copy code
+npm install -D tailwindcss
+npx tailwindcss init
+Configure Tailwind CSS by adding the following to the tailwind.config.js file:
 
-### `npm test`
+js
+Copy code
+module.exports = {
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        primary: 'var(--color-primary)',
+        secondary: 'var(--color-secondary)',
+      },
+    },
+  },
+  plugins: [],
+};
+Usage
+Start the development server:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+bash
+Copy code
+npm start
+Open http://localhost:3000 to view it in the browser.
 
-### `npm run build`
+You will see a dropdown menu where you can select a client. Each client has its own primary and secondary colors, and switching between them will dynamically change the theme.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Folder Structure
+php
+Copy code
+├── public
+├── src
+│   ├── App.js         # Main application component
+│   ├── index.js       # Entry point for React
+│   ├── index.css      # Global CSS styles including Tailwind setup
+│   ├── setClientTheme.js  # Function to apply client-specific theme based on local storage
+│   └── ...
+├── tailwind.config.js  # Tailwind configuration file
+└── README.md           # This readme file
+Explanation of Core Files
+App.js:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The main component where the client-specific theme is set.
+Contains a dropdown to switch between clients.
+Applies dynamic styling based on the selected client’s primary and secondary colors.
+setClientTheme.js:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Reads the client data from localStorage and sets the CSS variables (--color-primary and --color-secondary) to apply the theme across the app.
+tailwind.config.js:
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Extends Tailwind CSS with custom colors (primary and secondary) using CSS variables for dynamic theming.
